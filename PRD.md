@@ -1,72 +1,88 @@
 # Planning Guide
 
-A sophisticated digital portfolio showcasing a lawyer's expertise, experience, and professional achievements with an emphasis on credibility and trust.
+A professional legal services website showcasing Ghuman Law Associates' expertise and services, with a focus on building trust through three decades of proven excellence.
 
 **Experience Qualities**: 
 1. **Professional** - The interface should communicate authority and competence through refined typography, structured layouts, and polished interactions
-2. **Trustworthy** - Design choices should reinforce reliability through consistent visual language, clear hierarchy, and transparent information presentation
-3. **Approachable** - Despite the formal nature, the experience should feel welcoming through warm accents, readable content, and intuitive navigation
+2. **Trustworthy** - Design choices should reinforce reliability through consistent visual language, clear hierarchy, and transparent information presentation with mandatory disclaimer
+3. **Accessible** - Despite the formal nature, the experience should feel welcoming and serve both local clients and NRIs
 
 **Complexity Level**: Content Showcase (information-focused)
-This is primarily a presentation of professional information - practice areas, case results, credentials, and contact information - without complex application logic or state management.
+This is primarily a presentation of legal services information - practice areas, professional profiles, contact information, and QR code generation for business cards - with basic state management for disclaimer acceptance.
 
 ## Essential Features
 
-**Practice Areas Overview**
-- Functionality: Displays areas of legal specialization with descriptions
-- Purpose: Helps potential clients quickly identify relevant expertise
-- Trigger: Visible on main page load
-- Progression: View grid of practice areas → Read brief descriptions → Access detailed information if needed
-- Success criteria: All practice areas clearly visible with concise, understandable descriptions
+**Legal Disclaimer**
+- Functionality: Modal dialog that appears on first visit requiring explicit agreement
+- Purpose: Legal compliance and setting expectations for website use
+- Trigger: Automatically on first page load
+- Progression: Read disclaimer → Click Agree or Decline → Access site or exit
+- Success criteria: Disclaimer persists across sessions using KV storage, cannot be bypassed
 
-**Case Results / Portfolio**
-- Functionality: Showcases notable case outcomes and achievements
-- Purpose: Builds credibility through demonstrated success
-- Trigger: Accessible from navigation or scrolling
-- Progression: Browse case summaries → View outcome details → Understand expertise demonstrated
-- Success criteria: Results presented professionally with appropriate confidentiality, clear outcomes visible
+**Areas of Service**
+- Functionality: Displays comprehensive list of legal specializations with descriptions
+- Purpose: Helps potential clients quickly identify relevant expertise across 12+ practice areas
+- Trigger: Visible on main page after hero section
+- Progression: View grid of service areas → Read descriptions → Identify NRI services link
+- Success criteria: All 12 service areas clearly visible with icons, NRI services prominently linked
 
-**Professional Biography**
-- Functionality: Presents lawyer's background, education, and career history
-- Purpose: Establishes credentials and builds personal connection
+**About Us**
+- Functionality: Presents firm's 33-year history and commitment
+- Purpose: Establishes credibility and legacy in Punjab, Haryana, and Chandigarh region
 - Trigger: Accessible from navigation
-- Progression: Read career overview → Review education and certifications → Understand specializations
-- Success criteria: Complete professional story told compellingly and concisely
+- Progression: Read firm overview → Understand geographical coverage → Recognize experience level
+- Success criteria: Complete story told compellingly with emphasis on client satisfaction
+
+**Our Professionals**
+- Functionality: Showcases three advocates with experience details
+- Purpose: Builds personal connection and demonstrates team expertise
+- Trigger: Visible in dedicated section
+- Progression: View professional profiles → Note years in practice → Assess qualifications
+- Success criteria: All three professionals clearly presented with experience timeline
+
+**Submit a Query**
+- Functionality: Detailed contact form with country/state fields
+- Purpose: Capture detailed client information for consultation
+- Trigger: Accessible from navigation and CTA buttons
+- Progression: Fill name → Add email/phone → Specify location → Describe matter → Submit
+- Success criteria: All required fields validated, clear submission confirmation
 
 **Contact Information**
-- Functionality: Provides clear pathways to reach the lawyer
-- Purpose: Convert interest into consultation requests
-- Trigger: Accessible from navigation and prominent placement
+- Functionality: Displays multiple phone numbers, email, address, and interactive map
+- Purpose: Provides multiple channels to reach the firm
+- Trigger: Visible in dedicated section near footer
 - Progression: View contact options → Choose preferred method → Initiate contact
-- Success criteria: Multiple contact methods clearly presented, easy to use
+- Success criteria: Three phone numbers, email, complete Chandigarh address, embedded map functional
 
-**Credentials & Achievements**
-- Functionality: Lists bar admissions, awards, publications, speaking engagements
-- Purpose: Reinforces expertise and standing in legal community
+**QR Code Generator**
+- Functionality: Generates downloadable QR codes for both websites
+- Purpose: Provides assets for business cards and marketing materials
 - Trigger: Visible in dedicated section
-- Progression: Scan credentials → Review specific achievements → Assess qualifications
-- Success criteria: All credentials clearly organized and easy to verify
+- Progression: View QR codes → Download desired code → Use in print materials
+- Success criteria: Two QR codes (main site and NRI subdomain) downloadable as PNG files
 
 ## Edge Case Handling
 
-- **Long Practice Area Lists**: Use card grid layout that adapts to content, with consistent height treatment to maintain visual balance
-- **Missing Contact Attempts**: Provide multiple contact methods (phone, email, contact form) so if one fails, alternatives exist
-- **Mobile Viewing**: Responsive design ensures professional presentation on all devices, particularly important for clients researching on phones
-- **Content Updates**: Structure allows easy addition of new cases, credentials, or practice areas without layout disruption
+- **Disclaimer Rejection**: User clicking "Decline" redirects away from site
+- **Form Validation**: All required fields in query form properly validated before submission
+- **Mobile Navigation**: Long navigation menu (5 items) collapses appropriately on mobile
+- **QR Code Downloads**: QR codes render properly and download correctly across browsers
+- **Map Loading**: Embedded Google Map has fallback for slow connections
+- **Long Practice Area List**: 12 service areas organized in responsive 3-column grid
 
 ## Design Direction
 
-The design should evoke confidence, sophistication, and accessibility - the visual equivalent of a well-appointed law office that feels prestigious yet welcoming. Think rich but not ostentatious, structured yet human.
+The design should evoke confidence, sophistication, and accessibility - the visual equivalent of a well-established law firm that has served the region for over three decades. The aesthetic should balance traditional legal gravitas with modern professionalism.
 
 ## Color Selection
 
 A refined palette anchored in deep navy blues that communicate trust and authority, balanced with warm gold accents for approachability.
 
-- **Primary Color**: Deep Navy (oklch(0.25 0.05 250)) - Represents authority, professionalism, and legal tradition. Used for headers, primary buttons, and key structural elements.
+- **Primary Color**: Deep Navy (oklch(0.25 0.05 250)) - Represents authority, professionalism, and legal tradition. Used for headers, navigation, and key structural elements.
 - **Secondary Colors**: 
   - Slate Gray (oklch(0.45 0.01 250)) - Supporting text and less prominent UI elements
   - Light Cream (oklch(0.97 0.01 85)) - Card backgrounds and subtle highlights
-- **Accent Color**: Warm Gold (oklch(0.70 0.12 75)) - Call-to-action buttons, important highlights, and moments requiring attention. Communicates success and premium service.
+- **Accent Color**: Warm Gold (oklch(0.70 0.12 75)) - Call-to-action buttons, important highlights, and focus elements. Communicates success and premium service.
 - **Foreground/Background Pairings**: 
   - Primary Navy (oklch(0.25 0.05 250)): White text (oklch(0.99 0 0)) - Ratio 12.1:1 ✓
   - Accent Gold (oklch(0.70 0.12 75)): Deep Navy text (oklch(0.25 0.05 250)) - Ratio 5.8:1 ✓
@@ -77,61 +93,75 @@ A refined palette anchored in deep navy blues that communicate trust and authori
 
 Typefaces should balance traditional legal gravitas with modern readability - serif for authority, sans-serif for clarity.
 
-- **Primary Font**: Crimson Pro (serif) - For headings and lawyer name, communicating tradition and gravitas
+- **Primary Font**: Crimson Pro (serif) - For headings and major titles, communicating tradition and gravitas
 - **Secondary Font**: Inter (sans-serif) - For body text and UI elements, ensuring excellent readability
 - **Typographic Hierarchy**: 
-  - H1 (Lawyer Name): Crimson Pro Bold/48px/tight letter spacing (-0.02em)
-  - H2 (Section Headers): Crimson Pro SemiBold/36px/tight letter spacing (-0.01em)
+  - H1 (Hero Title): Crimson Pro Bold/60px/tight letter spacing (-0.02em) with line breaks for emphasis
+  - H2 (Section Headers): Crimson Pro SemiBold/40px/tight letter spacing (-0.01em)
   - H3 (Subsection Headers): Inter SemiBold/24px/normal letter spacing
   - Body (Main Content): Inter Regular/18px/relaxed line height (1.7)
-  - Small (Credentials): Inter Medium/14px/normal line height (1.5)
+  - Small (Details): Inter Medium/14px/normal line height (1.5)
 
 ## Animations
 
-Animations should feel refined and purposeful - subtle transitions that guide attention without drawing focus to themselves. Use gentle fades for content appearance, smooth easing for hover states on interactive elements, and fluid page scrolling. Motion should reinforce the sense of care and precision expected in legal work.
+Animations should feel refined and purposeful - subtle transitions that guide attention without drawing focus to themselves. Use gentle fades for content appearance (600ms), smooth easing for hover states on interactive elements (200-300ms), and fluid page scrolling. The disclaimer modal should appear with a subtle fade. Motion should reinforce the sense of care and precision expected in legal work.
 
 ## Component Selection
 
 - **Components**: 
-  - Card: For practice areas, case results, and credential displays with subtle shadows
-  - Button: Primary (gold accent) for contact CTAs, secondary (navy) for navigation
+  - Dialog: For mandatory legal disclaimer with no-close enforcement
+  - Card: For practice areas, professional profiles, and contact information
+  - Button: Primary (gold accent) for CTAs, secondary for navigation
+  - Input/Textarea: For comprehensive query form with validation
+  - Select: For country/state dropdowns if needed
+  - Badge: For years of experience and specializations
   - Separator: For visual breaks between major sections
-  - Badge: For specializations, certifications, and tags
-  - Dialog: For expanded case details or credential information if needed
-  - Scroll Area: For lengthy content sections while maintaining layout
-  - Avatar: For professional headshot with refined presentation
   
 - **Customizations**: 
-  - Hero section with full-width layout and professional photo
-  - Custom practice area cards with icon integration from Phosphor
-  - Timeline component for career history (custom, not in shadcn)
-  - Testimonial cards with subtle styling
+  - Hero section with multi-line headline emphasizing "Proven Excellence" and "Three Decades"
+  - Custom QR code generator component with download functionality
+  - Professional cards with placeholder for future photo integration
+  - Embedded Google Maps iframe for office location
+  - Disclaimer dialog with persistent storage using useKV
+  - Practice area cards with distinctive icons from Phosphor
+  - Two-column contact layout with form and information cards
 
 - **States**: 
-  - Buttons: Subtle scale transform on hover (1.02x), smooth color transition (200ms), pressed state with slight opacity
+  - Buttons: Subtle scale transform on hover (1.05x), smooth color transition (300ms)
   - Cards: Gentle lift on hover (shadow increase), border color shift to accent gold
-  - Links: Underline animation sliding in from left, color shift to accent gold
+  - Form inputs: Focus ring with accent color, clear validation states
+  - Disclaimer dialog: Cannot be dismissed without action, persists acceptance
+  - Navigation: Mobile hamburger menu with smooth slide animation
 
 - **Icon Selection**: 
-  - Scales (legal symbol) for logo/branding
-  - Briefcase for practice areas
-  - Trophy for achievements
-  - GraduationCap for education
-  - Phone, Envelope for contact methods
-  - MapPin for office location
-  - Award for credentials
+  - Scales for logo and legal symbolism
+  - Gavel for criminal laws
+  - House for property matters
+  - Users for family laws
+  - HandHeart for matrimonial laws
+  - ShieldCheck for consumer protection
+  - Briefcase for service matters
+  - Buildings for white collar crimes
+  - FileText for constitutional matters
+  - UserCircle for human rights
+  - Globe for NRI services
+  - Phone, Envelope, MapPin for contact
+  - QrCode for QR code section
+  - Download for QR code downloads
 
 - **Spacing**: 
   - Section padding: py-20 px-4 (desktop), py-12 px-4 (mobile)
-  - Card padding: p-6
-  - Content max-width: max-w-6xl
+  - Card padding: p-8
+  - Content max-width: max-w-6xl (max-w-7xl for navigation)
   - Grid gaps: gap-6 for cards, gap-4 for smaller elements
   - Consistent margin bottom between sections: mb-16
 
 - **Mobile**: 
-  - Navigation collapses to hamburger menu at 768px
+  - Navigation collapses to hamburger menu at 1024px (lg breakpoint) due to 5 items
   - Practice area grid: 3 columns (desktop) → 2 columns (tablet) → 1 column (mobile)
-  - Hero layout stacks vertically on mobile with photo above text
-  - Reduced typography scale (H1: 36px, H2: 28px on mobile)
+  - Hero text stacks with reduced font sizes
+  - Contact form and info stack vertically
+  - QR codes stack vertically on mobile
+  - Professional profiles in single column on mobile
   - Touch-friendly button sizes (min-h-12) throughout
-  - Simplified navigation with full-screen overlay menu
+  - Full-screen mobile menu overlay

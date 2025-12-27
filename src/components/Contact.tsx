@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { MapPin, Phone, Envelope, Clock } from "@phosphor-icons/react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { MapPin, Phone, Envelope } from "@phosphor-icons/react"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -13,37 +14,16 @@ export function Contact() {
     name: '',
     email: '',
     phone: '',
+    country: '',
+    state: '',
     message: ''
   })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    toast.success('Thank you for your inquiry! We will contact you within 24 hours.')
-    setFormData({ name: '', email: '', phone: '', message: '' })
+    toast.success('Thank you for your query! We will contact you within 24 hours.')
+    setFormData({ name: '', email: '', phone: '', country: '', state: '', message: '' })
   }
-
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Office Location",
-      content: "500 Market Street, Suite 2500\nSan Francisco, CA 94102"
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      content: "(555) 123-4567"
-    },
-    {
-      icon: Envelope,
-      title: "Email",
-      content: "victoria.chen@lawfirm.com"
-    },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      content: "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: By Appointment"
-    }
-  ]
 
   return (
     <section id="contact" className="py-20 px-4 bg-muted/30">
@@ -56,120 +36,216 @@ export function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            Get In Touch
+            Submit a Query
           </h2>
           <div className="h-1 w-24 bg-accent mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Schedule a consultation to discuss your legal needs
+            Get in touch with us to discuss your legal matter
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Card>
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="text-base">Full Name *</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="mt-2 h-12"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email" className="text-base">Email Address *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                      className="mt-2 h-12"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="phone" className="text-base">Phone Number</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="mt-2 h-12"
-                      placeholder="(555) 123-4567"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message" className="text-base">Message *</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                      className="mt-2 min-h-32"
-                      placeholder="Please describe your legal matter..."
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition-all hover:scale-[1.02]"
-                  >
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto"
+        >
+          <Card>
+            <CardContent className="p-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Label htmlFor="name" className="text-base">Name *</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="mt-2 h-12"
+                    placeholder="Your full name"
+                  />
+                </div>
+                
+                <div>
+                  <Label htmlFor="email" className="text-base">Email *</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                    className="mt-2 h-12"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                
+                <div>
+                  <Label htmlFor="phone" className="text-base">Phone *</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    required
+                    className="mt-2 h-12"
+                    placeholder="+91 98140 04646"
+                  />
+                </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            {contactInfo.map((info, index) => {
-              const Icon = info.icon
-              return (
-                <motion.div
-                  key={info.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="country" className="text-base">Country *</Label>
+                    <Input
+                      id="country"
+                      value={formData.country}
+                      onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                      required
+                      className="mt-2 h-12"
+                      placeholder="India"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="state" className="text-base">State/Province *</Label>
+                    <Input
+                      id="state"
+                      value={formData.state}
+                      onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                      required
+                      className="mt-2 h-12"
+                      placeholder="Punjab"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <Label htmlFor="message" className="text-base">Explain your matter in detail *</Label>
+                  <Textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                    className="mt-2 min-h-40"
+                    placeholder="Please describe your legal matter in detail..."
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition-all hover:scale-[1.02]"
                 >
-                  <Card className="hover:shadow-md transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                          <Icon size={24} className="text-accent" weight="duotone" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
-                          <p className="text-muted-foreground whitespace-pre-line">{info.content}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              )
-            })}
-          </motion.div>
+                  Submit Query
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+export function ContactInfo() {
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Phone",
+      content: ["+91 98140 04646", "+91 98551 88646", "+91 78371 29934"]
+    },
+    {
+      icon: Envelope,
+      title: "Email",
+      content: ["info@ghumanlawassociates.com"]
+    },
+    {
+      icon: MapPin,
+      title: "Address",
+      content: ["House number: 1100", "Sector 15-B", "Chandigarh, 160015"]
+    }
+  ]
+
+  return (
+    <section id="contact-info" className="py-20 px-4 bg-background">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
+            Contact Us
+          </h2>
+          <div className="h-1 w-24 bg-accent mx-auto" />
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {contactInfo.map((info, index) => {
+            const Icon = info.icon
+            return (
+              <motion.div
+                key={info.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-8 text-center">
+                    <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                      <Icon size={28} className="text-accent" weight="duotone" />
+                    </div>
+                    <h4 className="font-semibold text-foreground text-lg mb-3">{info.title}</h4>
+                    <div className="space-y-1">
+                      {info.content.map((line, idx) => (
+                        <p key={idx} className="text-muted-foreground">
+                          {info.title === "Phone" ? (
+                            <a href={`tel:${line.replace(/\s/g, '')}`} className="hover:text-accent transition-colors">
+                              {line}
+                            </a>
+                          ) : info.title === "Email" ? (
+                            <a href={`mailto:${line}`} className="hover:text-accent transition-colors">
+                              {line}
+                            </a>
+                          ) : (
+                            line
+                          )}
+                        </p>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            )
+          })}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center"
+        >
+          <Card>
+            <CardContent className="p-8">
+              <h3 className="text-xl font-semibold mb-4">Find Us</h3>
+              <div className="aspect-video rounded-lg overflow-hidden bg-muted">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.2719847058657!2d76.7648!3d30.7333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQzJzU5LjkiTiA3NsKwNDUnNTMuMyJF!5e0!3m2!1sen!2sin!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ghuman Law Associates Location"
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </section>
   )

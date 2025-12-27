@@ -1,37 +1,68 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Briefcase, Buildings, Lightbulb, Scales, FileText, Users } from "@phosphor-icons/react"
+import { Briefcase, Buildings, Lightbulb, Scales, FileText, Users, Gavel, House, ShieldCheck, CheckSquare, UserCircle, HandHeart, Globe } from "@phosphor-icons/react"
 import { motion } from "framer-motion"
 
 const practiceAreas = [
   {
-    icon: Buildings,
-    title: "Corporate Law",
-    description: "Comprehensive legal counsel for businesses including mergers, acquisitions, corporate governance, and regulatory compliance."
-  },
-  {
-    icon: Lightbulb,
-    title: "Intellectual Property",
-    description: "Protection and enforcement of patents, trademarks, copyrights, and trade secrets across diverse industries."
+    icon: Gavel,
+    title: "Criminal Laws",
+    description: "Comprehensive criminal defense representation across all courts with strategic defense planning."
   },
   {
     icon: Scales,
-    title: "Complex Litigation",
-    description: "Strategic representation in high-stakes commercial disputes, with a proven track record in federal and state courts."
-  },
-  {
-    icon: FileText,
-    title: "Contract Law",
-    description: "Drafting, negotiation, and litigation of complex commercial agreements to protect your business interests."
-  },
-  {
-    icon: Briefcase,
-    title: "Employment Law",
-    description: "Guidance on employment contracts, workplace policies, discrimination claims, and executive compensation."
+    title: "Civil Laws",
+    description: "Expert counsel in civil disputes including contracts, torts, and general civil litigation matters."
   },
   {
     icon: Users,
-    title: "Business Transactions",
-    description: "Expert advice on joint ventures, partnerships, financing arrangements, and strategic business planning."
+    title: "Family Laws",
+    description: "Compassionate guidance through family legal matters with focus on achieving favorable outcomes."
+  },
+  {
+    icon: HandHeart,
+    title: "Matrimonial Laws",
+    description: "Sensitive handling of matrimonial disputes including divorce, alimony, and related proceedings."
+  },
+  {
+    icon: House,
+    title: "Property & Real Estate Laws",
+    description: "Complete legal solutions for property transactions, disputes, and real estate matters."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Consumer Protection Laws",
+    description: "Protecting consumer rights and representing clients in consumer forums and commissions."
+  },
+  {
+    icon: CheckSquare,
+    title: "Election Disputes",
+    description: "Specialized representation in election-related legal matters and electoral disputes."
+  },
+  {
+    icon: Briefcase,
+    title: "Service Matters",
+    description: "Expert advice on employment disputes, service conditions, and tribunal matters."
+  },
+  {
+    icon: Buildings,
+    title: "White Collar Crimes",
+    description: "Defense in complex financial crimes and corporate fraud cases with proven track record."
+  },
+  {
+    icon: FileText,
+    title: "Constitutional Matters",
+    description: "High-level constitutional law matters before the High Court and Supreme Court."
+  },
+  {
+    icon: UserCircle,
+    title: "Human Rights Matters",
+    description: "Dedicated advocacy for protection and enforcement of fundamental human rights."
+  },
+  {
+    icon: Globe,
+    title: "Services for Overseas Indians/NRIs",
+    description: "Specialized legal services for Non-Resident Indians and overseas Indian citizens.",
+    link: true
   }
 ]
 
@@ -47,11 +78,11 @@ export function PracticeAreas() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            Practice Areas
+            Areas of Service
           </h2>
           <div className="h-1 w-24 bg-accent mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Specialized legal expertise across multiple practice areas to serve your unique needs
+            Comprehensive legal expertise across multiple practice areas serving Punjab, Haryana and Chandigarh
           </p>
         </motion.div>
 
@@ -64,9 +95,9 @@ export function PracticeAreas() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <Card className="h-full border-border hover:border-accent transition-all duration-300 hover:shadow-lg group">
+                <Card className={`h-full border-border hover:border-accent transition-all duration-300 hover:shadow-lg group ${area.link ? 'cursor-pointer' : ''}`}>
                   <CardHeader>
                     <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
                       <Icon size={28} className="text-primary group-hover:text-accent transition-colors" weight="duotone" />
@@ -77,6 +108,9 @@ export function PracticeAreas() {
                     <CardDescription className="text-base leading-relaxed">
                       {area.description}
                     </CardDescription>
+                    {area.link && (
+                      <p className="text-accent font-medium text-sm mt-3">Learn more →</p>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>

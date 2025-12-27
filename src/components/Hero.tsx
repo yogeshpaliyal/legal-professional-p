@@ -31,30 +31,24 @@ export function Hero() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="mb-6"
+          className="mb-8"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground tracking-tight mb-4">
-            Victoria Chen
+          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground tracking-tight mb-6 leading-tight">
+            A Legacy of<br />
+            <span className="text-accent">Proven Excellence</span><br />
+            in Litigation<br />
+            for Over Three Decades
           </h1>
-          <div className="h-1 w-32 bg-accent mx-auto mb-6" />
+          <div className="h-1 w-32 bg-accent mx-auto" />
         </motion.div>
         
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-xl md:text-2xl text-primary-foreground/90 mb-4 font-medium"
+          className="text-xl md:text-2xl text-primary-foreground/90 mb-12 font-medium max-w-3xl mx-auto"
         >
-          Attorney at Law
-        </motion.p>
-        
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-lg md:text-xl text-primary-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed"
-        >
-          Providing exceptional legal representation in corporate law, intellectual property, and complex litigation with over 15 years of experience
+          Trusted legal solutions across Punjab, Haryana and Chandigarh for more than 33 years
         </motion.p>
         
         <motion.div 
@@ -69,7 +63,7 @@ export function Hero() {
             className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg transition-all hover:scale-105"
           >
             <Envelope className="mr-2" weight="fill" />
-            Schedule Consultation
+            Submit a Query
           </Button>
           <Button 
             size="lg" 
@@ -77,9 +71,9 @@ export function Hero() {
             className="border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-lg backdrop-blur-sm transition-all hover:scale-105"
             asChild
           >
-            <a href="tel:+15551234567">
+            <a href="tel:+919814004646">
               <Phone className="mr-2" weight="fill" />
-              (555) 123-4567
+              +91 98140 04646
             </a>
           </Button>
         </motion.div>
