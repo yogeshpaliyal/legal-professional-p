@@ -1,16 +1,23 @@
 # Planning Guide
 
-A professional legal services website showcasing Ghuman Law Associates' expertise and services, with a focus on building trust through three decades of proven excellence.
+A professional legal services website showcasing Ghuman Law Associates' expertise and services, with a focus on building trust through three decades of proven excellence. The site features two distinct versions: a main site for general legal services and a specialized NRI site for Non-Resident Indians.
 
 **Experience Qualities**: 
 1. **Professional** - The interface should communicate authority and competence through refined typography, structured layouts, and polished interactions
 2. **Trustworthy** - Design choices should reinforce reliability through consistent visual language, clear hierarchy, and transparent information presentation with mandatory disclaimer
-3. **Accessible** - Despite the formal nature, the experience should feel welcoming and serve both local clients and NRIs
+3. **Accessible** - Despite the formal nature, the experience should feel welcoming and serve both local clients and NRIs with context-specific content
 
 **Complexity Level**: Content Showcase (information-focused)
-This is primarily a presentation of legal services information - practice areas, professional profiles, contact information, and QR code generation for business cards - with basic state management for disclaimer acceptance.
+This is primarily a presentation of legal services information - practice areas, professional profiles, contact information, and site switching capability - with basic state management for disclaimer acceptance and site version tracking.
 
 ## Essential Features
+
+**Site Version Switching**
+- Functionality: Allows users to toggle between main site and NRI-specific site with unique content
+- Purpose: Provide targeted content for different audiences (general clients vs NRIs)
+- Trigger: Navigation button or URL path (/nri)
+- Progression: Click site switcher → Content updates → URL changes → User sees relevant services
+- Success criteria: Content dynamically updates including hero, services, about section, and branding
 
 **Legal Disclaimer**
 - Functionality: Modal dialog that appears on first visit requiring explicit agreement
@@ -19,19 +26,33 @@ This is primarily a presentation of legal services information - practice areas,
 - Progression: Read disclaimer → Click Agree or Decline → Access site or exit
 - Success criteria: Disclaimer persists across sessions using KV storage, cannot be bypassed
 
-**Areas of Service**
-- Functionality: Displays comprehensive list of legal specializations with descriptions
-- Purpose: Helps potential clients quickly identify relevant expertise across 12+ practice areas
+**Areas of Service (Main Site)**
+- Functionality: Displays comprehensive list of 12 legal specializations with descriptions
+- Purpose: Helps potential clients quickly identify relevant expertise across practice areas
 - Trigger: Visible on main page after hero section
 - Progression: View grid of service areas → Read descriptions → Identify NRI services link
 - Success criteria: All 12 service areas clearly visible with icons, NRI services prominently linked
 
-**About Us**
+**NRI Legal Services (NRI Site)**
+- Functionality: Displays 14 specialized services designed specifically for Non-Resident Indians
+- Purpose: Address unique legal challenges faced by NRIs managing matters in India from abroad
+- Trigger: Visible on NRI site after hero section
+- Progression: View grid of NRI-specific services → Read detailed descriptions → Understand remote representation
+- Success criteria: All 14 NRI services clearly presented including property disputes, inheritance, POA, passport matters
+
+**About Us (Main Site)**
 - Functionality: Presents firm's 33-year history and commitment
 - Purpose: Establishes credibility and legacy in Punjab, Haryana, and Chandigarh region
 - Trigger: Accessible from navigation
 - Progression: Read firm overview → Understand geographical coverage → Recognize experience level
-- Success criteria: Complete story told compellingly with emphasis on client satisfaction
+- Success criteria: Complete story told compellingly with emphasis on client satisfaction and Supreme Court representation
+
+**Why Choose Us for NRI Services (NRI Site)**
+- Functionality: Explains firm's unique approach to serving NRI clients remotely
+- Purpose: Addresses NRI concerns about managing legal matters from abroad
+- Trigger: Accessible from navigation on NRI site
+- Progression: Read about remote services → Understand communication methods → Recognize specialized support
+- Success criteria: Clearly explains remote consultations, POA assistance, time zone flexibility, regular updates
 
 **Our Professionals**
 - Functionality: Showcases three advocates with experience details
@@ -54,21 +75,16 @@ This is primarily a presentation of legal services information - practice areas,
 - Progression: View contact options → Choose preferred method → Initiate contact
 - Success criteria: Three phone numbers, email, complete Chandigarh address, embedded map functional
 
-**QR Code Generator**
-- Functionality: Generates downloadable QR codes for both websites
-- Purpose: Provides assets for business cards and marketing materials
-- Trigger: Visible in dedicated section
-- Progression: View QR codes → Download desired code → Use in print materials
-- Success criteria: Two QR codes (main site and NRI subdomain) downloadable as PNG files
-
 ## Edge Case Handling
 
 - **Disclaimer Rejection**: User clicking "Decline" redirects away from site
 - **Form Validation**: All required fields in query form properly validated before submission
-- **Mobile Navigation**: Long navigation menu (5 items) collapses appropriately on mobile
-- **QR Code Downloads**: QR codes render properly and download correctly across browsers
+- **Mobile Navigation**: Navigation menu (5 items + site switcher) collapses appropriately on mobile
+- **Site Version Persistence**: isNRISite state persists across page interactions using KV storage
+- **URL-based Detection**: /nri path automatically sets NRI site mode
+- **Dynamic Titles**: Document title updates to reflect current site version
 - **Map Loading**: Embedded Google Map has fallback for slow connections
-- **Long Practice Area List**: 12 service areas organized in responsive 3-column grid
+- **Long Practice Area List**: 12 areas on main site, 14 on NRI site organized in responsive 3-column grid
 
 ## Design Direction
 

@@ -50,7 +50,9 @@ export function Navigation() {
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:bg-accent transition-colors">
               <Scales size={22} className="text-primary-foreground group-hover:text-accent-foreground" weight="fill" />
             </div>
-            <span className="text-lg font-bold text-foreground hidden sm:block">Ghuman Law Associates</span>
+            <span className="text-lg font-bold text-foreground hidden sm:block">
+              {isNRISite ? "NRI Legal Solutions" : "Ghuman Law Associates"}
+            </span>
           </button>
 
           <div className="hidden lg:flex items-center gap-1">

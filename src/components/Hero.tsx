@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { Envelope, Phone } from "@phosphor-icons/react"
 import { motion } from "framer-motion"
+import { useKV } from "@github/spark/hooks"
 
 export function Hero() {
+  const [isNRISite] = useKV<boolean>("is-nri-site", false)
+  
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -33,13 +36,27 @@ export function Hero() {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="mb-8"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground tracking-tight mb-6 leading-tight">
-            A Legacy of<br />
-            <span className="text-accent">Proven Excellence</span><br />
-            in Litigation<br />
-            for Over Three Decades
-          </h1>
-          <div className="h-1 w-32 bg-accent mx-auto" />
+          {isNRISite ? (
+            <>
+              <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground tracking-tight mb-6 leading-tight">
+                <span className="text-accent">NRI Legal Solutions</span><br />
+                by Ghuman Law Associates<br />
+                Protecting Your Rights<br />
+                Across Borders
+              </h1>
+              <div className="h-1 w-32 bg-accent mx-auto" />
+            </>
+          ) : (
+            <>
+              <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground tracking-tight mb-6 leading-tight">
+                A Legacy of<br />
+                <span className="text-accent">Proven Excellence</span><br />
+                in Litigation<br />
+                for Over Three Decades
+              </h1>
+              <div className="h-1 w-32 bg-accent mx-auto" />
+            </>
+          )}
         </motion.div>
         
         <motion.p 
@@ -48,7 +65,10 @@ export function Hero() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="text-xl md:text-2xl text-primary-foreground/90 mb-12 font-medium max-w-3xl mx-auto"
         >
-          Trusted legal solutions across Punjab, Haryana and Chandigarh for more than 33 years
+          {isNRISite 
+            ? "Specialized legal services for Non-Resident Indians navigating the Indian legal system from abroad"
+            : "Trusted legal solutions across Punjab, Haryana and Chandigarh for more than 33 years"
+          }
         </motion.p>
         
         <motion.div 

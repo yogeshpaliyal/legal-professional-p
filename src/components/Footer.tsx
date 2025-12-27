@@ -1,6 +1,9 @@
 import { Scales } from "@phosphor-icons/react"
+import { useKV } from "@github/spark/hooks"
 
 export function Footer() {
+  const [isNRISite] = useKV<boolean>("is-nri-site", false)
+  
   return (
     <footer className="bg-primary text-primary-foreground py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -10,10 +13,15 @@ export function Footer() {
               <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
                 <Scales size={22} className="text-accent-foreground" weight="fill" />
               </div>
-              <span className="text-xl font-bold">Ghuman Law Associates</span>
+              <span className="text-xl font-bold">
+                {isNRISite ? "NRI Legal Solutions" : "Ghuman Law Associates"}
+              </span>
             </div>
             <p className="text-primary-foreground/80 text-sm">
-              Over 33 years of proven excellence in litigation across Punjab, Haryana and Chandigarh.
+              {isNRISite 
+                ? "Specialized legal services for Non-Resident Indians navigating the Indian legal system from abroad."
+                : "Over 33 years of proven excellence in litigation across Punjab, Haryana and Chandigarh."
+              }
             </p>
           </div>
 
@@ -22,12 +30,12 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-primary-foreground/80">
               <li>
                 <button onClick={() => document.getElementById('practice-areas')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-accent transition-colors">
-                  Areas of Service
+                  {isNRISite ? "NRI Legal Services" : "Areas of Service"}
                 </button>
               </li>
               <li>
                 <button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-accent transition-colors">
-                  About Us
+                  {isNRISite ? "Why Choose Us" : "About Us"}
                 </button>
               </li>
               <li>

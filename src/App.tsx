@@ -13,7 +13,7 @@ import { useKV } from "@github/spark/hooks"
 function App() {
   const [disclaimerAccepted, setDisclaimerAccepted] = useKV<boolean>("disclaimer-accepted", false)
   const [showDisclaimer, setShowDisclaimer] = useState(false)
-  const [, setIsNRISite] = useKV<boolean>("is-nri-site", false)
+  const [isNRISite, setIsNRISite] = useKV<boolean>("is-nri-site", false)
 
   useEffect(() => {
     if (!disclaimerAccepted) {
@@ -23,7 +23,12 @@ function App() {
 
   useEffect(() => {
     const path = window.location.pathname
-    setIsNRISite(() => path.includes('/nri'))
+    const nriSite = path.includes('/nri')
+    setIsNRISite(() => nriSite)
+    
+    document.title = nriSite 
+      ? "NRI Legal Solutions by Ghuman Law Associates | Specialized Legal Services for NRIs"
+      : "Ghuman Law Associates | Legal Excellence for Over Three Decades"
   }, [setIsNRISite])
 
   const handleAgree = () => {
