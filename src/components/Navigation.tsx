@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button"
-import { Scales, List, X } from "@phosphor-icons/react"
+import { Scales, List, X, Globe } from "@phosphor-icons/react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useKV } from "@github/spark/hooks"
 
 const navLinks = [
   { label: "Areas of Service", href: "#practice-areas" },
@@ -13,28 +14,29 @@ const navLinks = [
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isNRISite] = useKV<boolean>("is-nri-site", false)
 
   const scrollToSection = (href: string) => {
     setMobileMenuOpen(false)
-    setTimeout(() => {
-      const element = document.querySelector(href)
-      if (element) {
-        const offset = 80
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-        const offsetPosition = elementPosition - offset
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        })
-      }
-    }, 300)
+    const element = document.querySelector(href)
+    if (element) {
+      const offset = 80
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - offset
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
   }
 
   const scrollToTop = () => {
     setMobileMenuOpen(false)
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }, 300)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleSiteSwitch = () => {
+    window.location.href = isNRISite ? "/" : "/nri"
   }
 
   return (
@@ -62,6 +64,14 @@ export function Navigation() {
                 {link.label}
               </Button>
             ))}
+            <Button
+              variant="ghost"
+              onClick={handleSiteSwitch}
+              className="text-foreground hover:text-accent hover:bg-accent/10 transition-colors ml-2"
+            >
+              <Globe className="mr-2" weight="duotone" />
+              {isNRISite ? "Visit Main Site" : "Visit NRI Site"}
+            </Button>
           </div>
 
           <Button
@@ -95,6 +105,14 @@ export function Navigation() {
                   {link.label}
                 </Button>
               ))}
+              <Button
+                variant="ghost"
+                onClick={handleSiteSwitch}
+                className="w-full justify-start text-foreground hover:text-accent hover:bg-accent/10 h-12"
+              >
+                <Globe className="mr-2" weight="duotone" />
+                {isNRISite ? "Visit Main Site" : "Visit NRI Site"}
+              </Button>
             </div>
           </motion.div>
         )}
