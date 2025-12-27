@@ -61,6 +61,13 @@ This is primarily a presentation of legal services information - practice areas,
 - Progression: View professional profiles → Note years in practice → Assess qualifications
 - Success criteria: All three professionals clearly presented with experience timeline
 
+**Testimonials & Success Stories**
+- Functionality: Displays client reviews and success stories in a card-based grid layout
+- Purpose: Builds trust and credibility by showcasing real client experiences and successful case outcomes
+- Trigger: Visible in dedicated section after Professionals
+- Progression: View testimonials grid → Read client experiences → See case types and outcomes → Understand firm's track record
+- Success criteria: Six testimonials per site version (main site and NRI site), each with client name, location, case type, rating, detailed review, and year. Different testimonials for main site (local clients) vs NRI site (overseas clients)
+
 **Submit a Query**
 - Functionality: Detailed contact form with country/state fields
 - Purpose: Capture detailed client information for consultation
@@ -79,7 +86,7 @@ This is primarily a presentation of legal services information - practice areas,
 
 - **Disclaimer Rejection**: User clicking "Decline" redirects away from site
 - **Form Validation**: All required fields in query form properly validated before submission
-- **Mobile Navigation**: Navigation menu (5 items + site switcher) collapses appropriately on mobile
+- **Mobile Navigation**: Navigation menu (6 items + site switcher) collapses appropriately on mobile
 - **Site Version Persistence**: isNRISite state persists across page interactions using KV storage
 - **URL-based Detection**: /nri path automatically sets NRI site mode
 - **Dynamic Titles**: Document title updates to reflect current site version
@@ -126,7 +133,7 @@ Animations should feel refined and purposeful - subtle transitions that guide at
 
 - **Components**: 
   - Dialog: For mandatory legal disclaimer with no-close enforcement
-  - Card: For practice areas, professional profiles, and contact information
+  - Card: For practice areas, professional profiles, testimonials, and contact information
   - Button: Primary (gold accent) for CTAs, secondary for navigation
   - Input/Textarea: For comprehensive query form with validation
   - Select: For country/state dropdowns if needed
@@ -161,6 +168,8 @@ Animations should feel refined and purposeful - subtle transitions that guide at
   - FileText for constitutional matters
   - UserCircle for human rights
   - Globe for NRI services
+  - Star for ratings in testimonials
+  - Quotes for testimonial design element
   - Phone, Envelope, MapPin for contact
   - QrCode for QR code section
   - Download for QR code downloads
@@ -173,8 +182,9 @@ Animations should feel refined and purposeful - subtle transitions that guide at
   - Consistent margin bottom between sections: mb-16
 
 - **Mobile**: 
-  - Navigation collapses to hamburger menu at 1024px (lg breakpoint) due to 5 items
+  - Navigation collapses to hamburger menu at 1024px (lg breakpoint) due to 6 items
   - Practice area grid: 3 columns (desktop) → 2 columns (tablet) → 1 column (mobile)
+  - Testimonials grid: 3 columns (desktop) → 2 columns (tablet) → 1 column (mobile)
   - Hero text stacks with reduced font sizes
   - Contact form and info stack vertically
   - QR codes stack vertically on mobile

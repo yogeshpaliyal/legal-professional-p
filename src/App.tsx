@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero"
 import { PracticeAreas } from "@/components/PracticeAreas"
 import { About } from "@/components/About"
 import { Professionals } from "@/components/Professionals"
+import { Testimonials } from "@/components/Testimonials"
 import { Contact, ContactInfo } from "@/components/Contact"
 import { Footer } from "@/components/Footer"
 import { Disclaimer } from "@/components/Disclaimer"
@@ -53,6 +54,7 @@ function App() {
         <PracticeAreas />
         <About />
         <Professionals />
+        <Testimonials />
         <Contact />
         <ContactInfo />
       </main>

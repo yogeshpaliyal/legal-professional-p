@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Areas of Service", href: "#practice-areas" },
   { label: "About Us", href: "#about" },
   { label: "Our Professionals", href: "#professionals" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Submit a Query", href: "#contact" },
   { label: "Contact Us", href: "#contact-info" }
 ]
